@@ -9,13 +9,15 @@
     "i18n": "grunt i18n",
     "watch:css": "sass --style compressed --source-map --embed-sources --no-error-css --watch --load-path=node_modules styles/:build/",
     "watch:js": "wp-scripts start scripts/editor scripts/front",
-    "compile:css": "sass --style compressed --source-map --load-path=node_modules styles/:build/ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
-    "combile:js": "wp-scripts build scripts/editor scripts/front",
+    "compile": "npm run compile:css && npm run compile:js",
+    "compile:css": "sass --style compressed --source-map --load-path=node_modules styles/:build/",
+    "compile:js": "wp-scripts build scripts/editor scripts/front",
     "format": "wp-scripts format",
     "lint:css": "wp-scripts lint-style styles",
     "lint:js": "wp-scripts lint-js scripts",
     "packages-update": "wp-scripts packages-update",
-    "plugin-zip": "wp-scripts plugin-zip"
+    "plugin-zip": "wp-scripts plugin-zip",
+    "bundle": "npm run compile && npm run plugin-zip"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.20",
