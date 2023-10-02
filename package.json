@@ -1,0 +1,37 @@
+{
+  "name": "query-params-conditional-visibility",
+  "version": "0.1.0",
+  "main": "Gruntfile.js",
+  "author": "Pierre PERONNET",
+  "scripts": {
+    "start": "grunt default",
+    "readme": "grunt readme",
+    "i18n": "grunt i18n",
+    "watch:css": "sass --style compressed --source-map --embed-sources --no-error-css --watch --load-path=node_modules styles/:build/",
+    "watch:js": "wp-scripts start scripts/editor scripts/front",
+    "compile:css": "sass --style compressed --source-map --load-path=node_modules styles/:build/ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "combile:js": "wp-scripts build scripts/editor scripts/front",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style styles",
+    "lint:js": "wp-scripts lint-js scripts",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.20",
+    "@wordpress/scripts": "^26.13.0",
+    "grunt": "~0.4.5",
+    "grunt-wp-i18n": "~0.5.0",
+    "grunt-wp-readme-to-markdown": "~1.0.0"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^12.10.0",
+    "@wordpress/components": "^25.8.0",
+    "@wordpress/dom-ready": "^3.42.0",
+    "@wordpress/hooks": "^3.42.0",
+    "@wordpress/i18n": "^4.42.0",
+    "@wordpress/icons": "^9.33.0",
+    "jquery": "^3.7.1",
+    "react": "^18.2.0"
+  }
+}
