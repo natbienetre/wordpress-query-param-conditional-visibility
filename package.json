@@ -17,7 +17,8 @@
     "lint:js": "wp-scripts lint-js scripts",
     "packages-update": "wp-scripts packages-update",
     "plugin-zip": "wp-scripts plugin-zip",
-    "bundle": "npm run compile && npm run plugin-zip"
+    "bundle": "npm run compile && npm run plugin-zip",
+    "version": "grep ' * Version:' ${npm_package_name}.php | head -n 1 | sed -e 's/.*: *//'"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.20",

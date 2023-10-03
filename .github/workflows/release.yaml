@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install --dev
+
+    - name: Build
+      run: npm run bundle
+
+    - name: Version
+      id: version
+      run: |-
+        echo PLUGIN_VERSION="$(npm run --silent version)" >> "$GITHUB_OUTPUT"
+        git log $(git describe --tags --abbrev=0)..HEAD --oneline > changes.txt
+
+    - uses: ncipollo/release-action@v1
+      with:
+        artifactContentType: "application/zip"
+        artifactErrorsFailBuild: true
+        artifacts: "fund-me.zip"
+        bodyFile: changes.txt
+        draft: true
+        omitDraftDuringUpdate: true
+        removeArtifacts: true
+        tag: "v${{ steps.version.outputs.PLUGIN_VERSION }}"
+        updateOnlyUnreleased: true
