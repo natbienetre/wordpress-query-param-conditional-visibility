@@ -35,7 +35,7 @@ jobs:
       with:
         artifactContentType: "application/zip"
         artifactErrorsFailBuild: true
-        artifacts: "fund-me.zip"
+        artifacts: "query-params-conditional-visibility.zip"
         bodyFile: changes.txt
         draft: true
         omitDraftDuringUpdate: true
