@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name:     Query Params Conditional Visibility
- * Plugin URI:      PLUGIN SITE HERE
- * Description:     Blocks conditions for Gutenberg let you show or hide blocks depending on the context.
+ * Plugin URI:      https://github.com/natbienetre/wordpress-query-param-conditional-visibility
+ * Description:     A WordPress plugin to conditionally show or hide blocks based on query params.
  * Author:          Pierre PERONNET
- * Author URI:      YOUR SITE HERE
+ * Author URI:      https://github.com/holyhope
+ * Funding URI:     https://github.com/sponsors/holyhope
  * Text Domain:     query-params-conditional-visibility
  * Domain Path:     /languages
  * Version:         0.1.0

@@ -30,13 +30,13 @@ msgid "Query Params Conditional Visibility"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "PLUGIN SITE HERE"
+msgid "https://github.com/natbienetre/wordpress-query-param-conditional-visibility"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Blocks conditions for Gutenberg let you show or hide blocks depending on "
-"the context."
+"A WordPress plugin to conditionally show or hide blocks based on query "
+"params."
 msgstr ""
 
 #. Author of the plugin/theme
@@ -44,5 +44,5 @@ msgid "Pierre PERONNET"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "YOUR SITE HERE"
+msgid "https://github.com/holyhope"
 msgstr ""
