@@ -8,7 +8,7 @@ import { InspectorAdvancedControls } from '@wordpress/block-editor';
 import { edit as QueryParametersEdit } from './query-params-editor';
 import { DataName } from './front';
 
-function register(settings) {
+export function register(settings) {
 	return {
 		...settings,
 		attributes: {
@@ -22,7 +22,7 @@ function register(settings) {
 }
 addFilter('blocks.registerBlockType', 'blocks-components/register', register);
 
-const save = (element, _, attributes) => {
+export const save = (element, _, attributes) => {
 	if (!element || !attributes.queryParamsConditionalVisibility) {
 		return element;
 	}
