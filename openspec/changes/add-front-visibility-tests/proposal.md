@@ -6,8 +6,8 @@ The plugin has zero test coverage today: the only PHPUnit test is excluded, and 
 
 - Extract the hide/show predicate and the DOM-scan/cleanup routine out of `scripts/front.tsx`'s `domReady` callback into named, exported functions (`shouldHideBlock`, `applyVisibility`) so they are directly unit-testable, with no behavior change to the extraction itself.
 - **Fix the ancestor-cleanup defect**: bound the "remove empty wrapper" walk so it never removes an ancestor at or above the `.site` boundary, and never removes an ancestor that still contains non-text content (images, media, etc.) after the hidden block is removed. This is a behavior change to the cleanup routine; the hide/show decision itself (which blocks get removed) is unchanged.
-- Export `register` and `save` from `scripts/editor.tsx` (currently unexported consts) so the editor-side attribute/data-attribute contract is directly testable. No behavior change.
-- Add Jest unit tests covering: the hide/show predicate (including the existing OR-across-multiple-conditions semantics, and the absent-query-param and empty-conditions edge cases), the DOM cleanup routine (safe removal, the img-wrapper regression case, and the bounded-walk fix), and the editor's attribute/save-filter contract.
+- Extract `register` and `save` (currently unexported consts in `scripts/editor.tsx`) into a new `scripts/attributes.ts` module, re-exported from `editor.tsx` for the production filter registrations, so the editor-side attribute/data-attribute contract is directly testable without importing `editor.tsx`'s heavier UI dependency tree. No behavior change.
+- Add Jest unit tests covering: the hide/show predicate (including the existing OR-across-multiple-conditions semantics, and the absent-query-param and empty-conditions edge cases), the DOM cleanup routine (safe removal, the img-wrapper regression case, and the bounded-walk fix), and the attribute/save-filter contract.
 - Wire `wp-scripts test-unit-js` into `package.json` (`test:unit`) and run it in CI (`build.yml`).
 
 Out of scope: `scripts/query-params-editor.tsx` (the block-editor add/remove condition UI) is not covered by this change — testing it well would need a new dependency (`@testing-library/react`), which is a separate decision.
@@ -23,6 +23,6 @@ Out of scope: `scripts/query-params-editor.tsx` (the block-editor add/remove con
 ## Impact
 
 - Affected code: `scripts/front.tsx`, `scripts/editor.tsx`, `package.json`, `.github/workflows/build.yml`.
-- New files: `scripts/test/front.test.ts`, `scripts/test/editor.test.tsx`.
+- New files: `scripts/attributes.ts`, `scripts/test/front.test.ts`, `scripts/test/attributes.test.ts`.
 - No new runtime dependencies; `@wordpress/scripts`' bundled Jest preset (`test-unit-js`) is already installed.
 - Behavior change for site visitors: a block that is hidden will no longer, in rare cases, cause deletion of unrelated non-text ancestor content or (in the worst case) `<body>`/`<html>`.
