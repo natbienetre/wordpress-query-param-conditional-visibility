@@ -1,12 +1,12 @@
 ## 1. Make `front.tsx` testable and fix the ancestor-cleanup defect
 
-- [ ] 1.1 Extract the hide/show comparison into an exported `shouldHideBlock(conditions, searchParams)` function; verify `scripts/front.tsx` still compiles (`npm run compile:js`) with no behavior change to the existing hide/show decision
-- [ ] 1.2 Extract the `domReady` callback's body into an exported `applyVisibility()` function, computing `currentURL` inside the function rather than at module scope, and keep `domReady(applyVisibility)` wired at module scope; verify `npm run compile:js` still succeeds
-- [ ] 1.3 Bound the ancestor-cleanup walk so it never considers `.site` or anything above it, and never removes an ancestor that still has non-text content after the block is removed; verify against the reproduction from proposal.md (a hidden block whose only sibling is an `<img>` no longer causes the wrapper, `.site`, `body`, or `html` to be removed)
+- [x] 1.1 Extract the hide/show comparison into an exported `shouldHideBlock(conditions, searchParams)` function; verify `scripts/front.tsx` still compiles (`npm run compile:js`) with no behavior change to the existing hide/show decision
+- [x] 1.2 Extract the `domReady` callback's body into an exported `applyVisibility()` function, computing `currentURL` inside the function rather than at module scope, and keep `domReady(applyVisibility)` wired at module scope; verify `npm run compile:js` still succeeds
+- [x] 1.3 Bound the ancestor-cleanup walk so it never considers `.site` or anything above it, and never removes an ancestor that still has non-text content after the block is removed; verify against the reproduction from proposal.md (a hidden block whose only sibling is an `<img>` no longer causes the wrapper, `.site`, `body`, or `html` to be removed)
 
 ## 2. Export the editor-side attribute/save contract
 
-- [ ] 2.1 Export `register` and `save` from `scripts/editor.tsx` (add the `export` keyword, no logic change); verify `npm run compile:js` still succeeds
+- [x] 2.1 Export `register` and `save` from `scripts/editor.tsx` (add the `export` keyword, no logic change); verify `npm run compile:js` still succeeds
 
 ## 3. Add JS unit tests
 
