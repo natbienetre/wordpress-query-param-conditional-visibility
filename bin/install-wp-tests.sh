@@ -71,7 +71,7 @@ install_wp() {
 			local ARCHIVE_NAME='latest'
 		elif [[ $WP_VERSION =~ [0-9]+\.[0-9]+ ]]; then
 			# https serves multiple offers, whereas http serves single.
-			download https://api.wordpress.org/core/version-check/1.7/ $TMPDIR/wp-latest.json
+			download https://api.wordpress.org/core/version-check/1.7/ "$TMPDIR/wp-latest.json"
 			if [[ $WP_VERSION =~ [0-9]+\.[0-9]+\.[0] ]]; then
 				# version x.x.0 means the first release of the major version, so strip off the .0 and download version x.x
 				LATEST_VERSION=${WP_VERSION%??}
