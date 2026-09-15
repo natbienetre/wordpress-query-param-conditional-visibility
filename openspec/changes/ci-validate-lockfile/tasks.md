@@ -9,7 +9,7 @@
 
 ## 2. Verification
 
-- [ ] 2.1 Open a PR with these changes and confirm the `build` workflow (`Install dependencies`,
+- [x] 2.1 Open a PR with these changes and confirm the `build` workflow (`Install dependencies`,
       `Test`, `Build` steps) passes end to end on CI.
 - [x] 2.2 Confirm `npm run test:unit` and `npm run bundle` still succeed after `npm ci` installs
       dependencies (same commands the `build` job already runs), so the swap from `npm install` to
