@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   build:
+    name: Build and release
     runs-on: ubuntu-latest
 
     strategy:
